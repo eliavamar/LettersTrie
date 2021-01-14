@@ -49,13 +49,12 @@ return (*p)->children[c-'a'];
 }
 else if((*p)->letters!=NULL){
 (*p)->children[c-'a']=newNode(c);
-(*p)->children[c-'a']->letters=(char*)(malloc((*p)->index+2));
+(*p)->children[c-'a']->letters=(char*)(malloc(strlen((*p)->letters)+2));
 if(!((*p)->children[c-'a']->letters))
 exit(1);
 strcpy((*p)->children[c-'a']->letters,(*p)->letters);
-(*p)->children[c-'a']->letters[(*p)->index+1]=c;
-(*p)->children[c-'a']->letters[(*p)->index+2]='\0';
-(*p)->children[c-'a']->index=(*p)->index+1;
+(*p)->children[c-'a']->letters[strlen((*p)->letters)]=c;
+(*p)->children[c-'a']->letters[strlen((*p)->letters)+1]='\0';
 return (*p)->children[c-'a'];
 }
 else{
@@ -65,7 +64,6 @@ if(!((*p)->children[c-'a']->letters))
 exit(1);
 (*p)->children[c-'a']->letters[0]=c;
 (*p)->children[c-'a']->letters[1]='\0';
-(*p)->children[c-'a']->index=0;
 return (*p)->children[c-'a'];
 	}
 	    
